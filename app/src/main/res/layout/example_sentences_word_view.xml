@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_baseline_arrow_down_24"
+        app:layout_constraintBottom_toBottomOf="@id/example_sentences_text_before_translate"
+        app:layout_constraintEnd_toStartOf="@id/example_sentences_text_before_translate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/example_sentences_text_before_translate" />
+
+    <TextView
+        android:id="@+id/example_sentences_text_before_translate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Text.Less"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Какое то длинное русское предложение"
+        app:layout_constraintBottom_toTopOf="@id/example_sentences_text_after_translate"
+        app:layout_constraintEnd_toEndOf="@id/separator_bottom"
+        app:layout_constraintStart_toEndOf="@id/arrow"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/example_sentences_text_after_translate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Text.Less"
+        android:layout_marginHorizontal="8dp"
+        android:text="Ein langer deutsch Satz"
+        app:layout_constraintBottom_toTopOf="@id/separator_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/arrow"
+        app:layout_constraintTop_toBottomOf="@id/example_sentences_text_before_translate"
+        android:visibility="gone"
+        />
+
+    <View
+        android:id="@+id/separator_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/separator_gradient"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/example_sentences_text_after_translate"
+        />
+
+</merge>

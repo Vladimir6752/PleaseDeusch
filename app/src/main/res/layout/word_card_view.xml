@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_thin_gray_corners">
+
+    <com.vladimir.pleasedeutch.views.HeaderWordView
+        android:id="@+id/header_word_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingHorizontal="16dp"
+        />
+
+    <com.vladimir.pleasedeutch.views.WordTranslateView
+        android:id="@+id/word_translate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        />
+
+    <com.vladimir.pleasedeutch.views.SubmitWordButtonsView
+        android:id="@+id/submit_word_buttons_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <com.vladimir.pleasedeutch.views.ExampleSentencesWordView
+        android:id="@+id/example_sentence1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <com.vladimir.pleasedeutch.views.ExampleSentencesWordView
+        android:id="@+id/example_sentence2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <com.vladimir.pleasedeutch.views.ExampleSentencesWordView
+        android:id="@+id/example_sentence3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

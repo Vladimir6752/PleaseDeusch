@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <View
+        android:id="@+id/submit_word_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/separator_top"
+        app:layout_constraintEnd_toStartOf="@id/separator_for_backgrounds"
+        app:layout_constraintBottom_toTopOf="@id/separator_bottom"
+        android:background="@color/green"
+        android:alpha="0"
+        />
+
+    <View
+        android:id="@+id/repeat_word_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/separator_for_backgrounds"
+        app:layout_constraintTop_toBottomOf="@id/separator_top"
+        app:layout_constraintBottom_toTopOf="@id/separator_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/yellow"
+        android:alpha="0"
+        />
+
+    <ImageView
+        android:id="@+id/submit_word_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_baseline_submit_word_24"
+        app:layout_constraintBottom_toBottomOf="@+id/separator_bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/separator_top" />
+
+    <TextView
+        android:id="@+id/submit_word_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выучил"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/center_separator"
+        app:layout_constraintStart_toEndOf="@+id/submit_word_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/separator_top"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/separator_gradient"
+        app:layout_constraintBottom_toTopOf="@+id/separator_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:id="@+id/separator_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/separator_gradient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/separator_top"
+        />
+
+    <View
+        android:id="@+id/center_separator"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@drawable/separator"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:id="@+id/separator_for_backgrounds"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/repeat_word_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Учить"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/repeat_word_image"
+        app:layout_constraintStart_toEndOf="@id/center_separator"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/repeat_word_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_baseline_repeat_word_24"
+        app:layout_constraintBottom_toBottomOf="@+id/separator_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator_top"
+        />
+</merge>
