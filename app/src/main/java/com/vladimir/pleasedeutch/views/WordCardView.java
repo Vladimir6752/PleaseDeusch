@@ -37,6 +37,8 @@ public class WordCardView extends LinearLayout {
         binding = WordCardViewBinding.bind(this);
 
         setWord(currentWord);
+
+        binding.submitWordButtonsLayout.currentWordCardView = this;
     }
 
     public void setWord(Word word) {

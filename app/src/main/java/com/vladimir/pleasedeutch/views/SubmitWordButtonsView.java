@@ -17,6 +17,7 @@ public class SubmitWordButtonsView extends ConstraintLayout {
     private SubmitWordButtonsBinding binding;
     public static int widthInPixels;
     public static int MAX_TRANSLATION_X_PX;
+    public WordCardView currentWordCardView;
 
     public SubmitWordButtonsView(@NonNull Context context) {
         this(context, null);

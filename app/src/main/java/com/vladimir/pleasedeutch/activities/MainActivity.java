@@ -10,7 +10,7 @@ import com.vladimir.pleasedeutch.utilities.WordModelChanger;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static ActivityMainBinding binding;
+    public static ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -26,6 +26,9 @@ public class OnTouchSubmitWordButtonsListener implements View.OnTouchListener {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        if(((SubmitWordButtonsView) binding.getRoot()).currentWordCardView.getAnimation() != null)
+            return true;
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 setBeginTouchData(event);

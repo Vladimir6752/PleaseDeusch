@@ -1,21 +1,30 @@
 package com.vladimir.pleasedeutch.utilities;
 
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.vladimir.pleasedeutch.R;
+import com.vladimir.pleasedeutch.activities.MainActivity;
 import com.vladimir.pleasedeutch.databinding.ActivityMainBinding;
 import com.vladimir.pleasedeutch.model.Word;
 import com.vladimir.pleasedeutch.views.WordCardView;
 
 public class WordCardChanger {
     private static com.vladimir.pleasedeutch.databinding.ActivityMainBinding binding;
-    private static boolean isSecondCardOnDisplay = true;
     private static Animation fadeAnimation;
     private static Animation appearanceAnimation;
+    private static WordCardView appearanceWordCard;
+    private static WordCardView currentWordCard;
+    private static ViewGroup.LayoutParams targetLayoutParams;
+
+    private WordCardChanger() {}
 
     public static void init(ActivityMainBinding binding) {
         WordCardChanger.binding = binding;
+        currentWordCard = binding.wordCardViewCurrent;
+        targetLayoutParams = binding.wordCardViewCurrent.getLayoutParams();
 
         fadeAnimation = AnimationUtils.loadAnimation(
                 binding.getRoot().getContext(),
@@ -25,85 +34,31 @@ public class WordCardChanger {
                 binding.getRoot().getContext(),
                 R.anim.card_appearance_anim
         );
-
-        fadeAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                getCurrentWordCardView().closeAllExampleSentences();
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        appearanceAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                getCurrentWordCardView().closeAllExampleSentences();
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
     }
 
-    public static void changeCard() {
-        isSecondCardOnDisplay = !isSecondCardOnDisplay;
+    public static void changeCard(Word newWord) {
+        updateAppearanceWordCard(newWord);
+        appearanceWordCard.setVisibility(View.VISIBLE);
+        appearanceWordCard.startAnimation(appearanceAnimation);
 
-        startAnimationsChange();
+        currentWordCard.startAnimation(fadeAnimation);
+
+        binding.getRoot().postDelayed(() -> {
+            binding.getRoot().removeView(currentWordCard);
+            currentWordCard = appearanceWordCard;
+        }, appearanceAnimation.getDuration() + 200);
     }
 
-    private static void startAnimationsChange() {
-        if(isSecondCardOnDisplay) {
-            binding.wordCardViewSecond.startAnimation(appearanceAnimation);
-            binding.wordCardViewFirst.startAnimation(fadeAnimation);
-        } else {
-            binding.wordCardViewFirst.startAnimation(appearanceAnimation);
-            binding.wordCardViewSecond.startAnimation(fadeAnimation);
-        }
+    private static void updateAppearanceWordCard(Word newWord) {
+        WordCardView wordCardView = new WordCardView(MainActivity.binding.getRoot().getContext());
+        wordCardView.setLayoutParams(targetLayoutParams);
+        wordCardView.setWord(newWord);
+        wordCardView.setVisibility(View.GONE);
+        binding.getRoot().addView(wordCardView, 0);
+        appearanceWordCard = wordCardView;
     }
 
     public static WordCardView getCurrentWordCardView() {
-        return isSecondCardOnDisplay
-                ?
-                binding.wordCardViewSecond
-                :
-                binding.wordCardViewFirst;
-    }
-
-    public static void setWordInCards(Word word) {
-        getCurrentWordCardView().setWord(word);
-
-        binding.wordCardViewFirst.getAnimation().setAnimationListener(
-                new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        binding.wordCardViewFirst.setWord(word);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                }
-        );
+        return currentWordCard;
     }
 }
